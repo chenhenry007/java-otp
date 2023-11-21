@@ -1,3 +1,14 @@
+buildscript {
+    apply from: "${project.rootDir}/repositories.gradle"
+
+    repositories globalRepositoryDefinition
+
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
 plugins {
     id 'java'
 }
@@ -8,10 +19,19 @@ version '1.0-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
-    mavenCentral()
+
+
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+    }
+    repositories globalRepositoryDefinition
 }
 
 dependencies {
+
+    testImplementation "junit:junit:4.13"
     testCompile("org.junit.jupiter:junit-jupiter-api:5.3.2")
     testRuntime("org.junit.jupiter:junit-jupiter-engine:5.3.2")
     testCompile 'org.mockito:mockito-core:2.18.3'
